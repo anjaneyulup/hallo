@@ -1,0 +1,12 @@
+--- # hallo this setup
+- hosts: webserver
+  user: hallo
+  sudo: yes
+  gather_facts: yes
+  tasks:
+  - name: install httpd package
+    yum: name=httpd state=installed
+  - name: capy index.html
+    copy: src=index.html dest=/var/www/html/index.html
+  - name: starting httpd service
+    service: name=httpd state=restarted
